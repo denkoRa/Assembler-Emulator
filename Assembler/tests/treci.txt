@@ -1,0 +1,51 @@
+
+	.extern z
+.bss.prva 
+	.skip 100
+	.align 8
+.text.prva
+	.global a, c, b, main
+main:	
+	
+
+	add r1, r2
+a:	shl r1, r1, 2
+	int 5
+	subs r3, 10
+	test r1, r3 
+	div r2, 2
+	div r4, r2
+	callge a
+	ldr r3, a
+	ldc r4, b
+	ldr r5, [r4--]	
+	ldc r1, i
+	mov PC, r1
+
+.data.prva
+dataPrva:
+	.long 10, 20, 30
+b:	.long a
+	.word 3, 3, 2
+	.long main - dataPrva
+
+.bss.druga
+	.skip 500
+.text.druga
+	
+i:	ldr r12, [--r13	, 100	]
+	str r12, [r10++]
+	ldr r13, [++SP]
+j:	add r14, 8192
+	out r13, r14
+	ldc r11, c
+	ldc r9, j - i
+	ldc r8, j - b
+.bss.treca
+	.skip 300
+c:	.skip 300
+.data.druga
+	.long c
+	.long 22
+	.long z
+.end

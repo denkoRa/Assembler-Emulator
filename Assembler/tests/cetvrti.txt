@@ -1,0 +1,47 @@
+.bss.prva 
+	.skip 100
+	.align 8
+
+	.global main
+	
+
+.text.treca
+R:	add r4, r2
+	sub r5, r3
+G:	mul r5, r4
+	shr r6, r5, 2
+	add r7, r6
+
+.data.treca
+	.long G
+var:	.long 129
+	.long R - G
+	.word 11
+
+.global R
+
+.text.cetvrta
+main:
+	ldceq r5, var
+	ldr r4, [r5]
+	ldc r1, 0
+	ldc r6, 0
+	ldc r7, END
+loop:	
+	cmps r4, r6
+	moveq PC, r7
+	shr r3, r4, 1
+	mul r3, 2
+	mov r4, r2
+	subs r2, r3
+	addgt r1, 1
+	ldc r5, 0
+	mov r4, r3
+END:
+	ldc r2, 8192
+	out r1, r2
+.bss.druga
+	.skip 400
+.end
+
+

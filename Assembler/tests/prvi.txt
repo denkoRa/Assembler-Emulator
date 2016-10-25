@@ -1,0 +1,36 @@
+
+.text.prva
+.global main
+main:
+	in r1, r9
+	ldr r2, [r1++]
+	ldr r3, [r2--]
+a:	add r4, r2
+	sub r5, r3
+b:	mul r5, r4
+	shr r6, r5, 2
+	add r7, r6
+	ldc r8, 0
+	cmp r7, r8
+	calleq a
+.text.druga
+	ldc r9, a
+	ldc r8, 31
+	and r9, r8
+	.align 8
+.bss.prva
+
+	.skip 16
+	.align 8
+.data.prva
+	.long b
+	.long a
+	.word 200
+.bss.druga
+	.skip 32
+.data.druga
+
+	.long 5
+
+
+.end

@@ -1,0 +1,36 @@
+
+.global main
+
+.data.prva
+a:	.word 15
+b:	.char 10
+.bss.prva
+	.skip 20
+.text.prva
+
+main:
+
+c:	.char 15
+	.char 10
+.extern j
+	.long b
+	int 4
+	add r0, 255 
+	sub r11, r17
+	mul r10, r15
+	div r9, 15
+	ldc r3, a - c
+	ldc r4, c - a
+	add r3, r4	
+	call c
+.data.druga
+	.long b
+	.long a - c
+	.long 1200
+.text.druga
+	ands r1, r3
+d:	orgt r1, r2
+	not r5, r6
+	tests r8, r8
+	ldr r1, d
+.end
